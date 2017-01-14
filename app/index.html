@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test DataClient</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <!--link href="./app.css" rel='stylesheet' type='text/css'-->
+  <script src="./app.js"></script>
+</head>
+<body>
+  <h1>Test DataClient</h1>
+
+  <h3>GetField: name <input id="get_field_name" type="text" style="width: 200px;"/></h3>
+  <button id="get_field" onclick="getField()">Get Field</button>
+  <br><br>
+
+  <h3>SetField: name <input id="set_field_name" type="text" style="width: 200px;"/></h3>
+  <h3>          value<input id="set_field_value" type="text" style="width: 200px;"/></h3>
+  <button id="set_field" onclick="setField()">Set Field</button>
+  <br><br>
+
+  <textarea rows="10" cols="50" style="max-height:200px; min-height:200px;" id="output_textarea"></textarea>
+  <br><br>
+
+</body>
+</html>
