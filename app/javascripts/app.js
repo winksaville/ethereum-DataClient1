@@ -47,13 +47,19 @@ function setField() {
 
   var set_field_name = document.getElementById("set_field_name").value;
   var set_field_value = document.getElementById("set_field_value").value;
-  log("setField: name=" + set_field_name + " value=" + set_field_value);
 
-  data_client.setField(set_field_name, set_field_value, {from: account}).then(function() {
-    log("setField: cb successfully set '" + set_field_name + "' to '" + set_field_value + "'");
+  data_client.setField(set_field_name, set_field_value, {from: account, gas:720000}).then(function(hash) {
+    log("setField cb hash=" + hash);
+    web3.eth.getTransactionReceipt(hash, function (error, receipt) {
+      if (error == null) {
+        log("setField getTransactionReceipt success gasUsed=" + receipt.gasUsed);
+      } else {
+        log("setField getTransactionReceipt error=" + error);
+      }
+    });
   }).catch(function(e) {
-    log("setField: cb e=" + e);
-  })
+    log("setField: caught error setting name=" + set_field_name + " value=" + set_field_value, " error=" + e);
+  });
 
   log("setField:-");
 };
